@@ -1,0 +1,55 @@
+import discord 
+from discord.ext import commands 
+import random 
+
+
+
+client = commands.Bot(command_prefix = ".")
+
+
+
+@client.event 
+async def on_ready():
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=".thanks and .Q (question)"))
+    print("do not worry now i am here")
+
+
+@client.command()
+async def first(ctx):
+    await ctx.send(f"i will become the best bot ")
+
+@client.command(aliases=['question','Q'])
+async def ques(ctx, *, question):
+    responses = ["hi",
+                    "bye",
+                    'yes',
+                    'no',
+                    'same to you ',
+                    'do you like maths ?',
+                    'i am maths nerd the best bot','i do not understand',
+                    'ok',
+                    'whats your question is ',
+                    'my name is math nerd and yours',
+                    'do you searched question hunter on youtube ?',
+                    'you will become succesful',
+                    'i can and i will']
+    await ctx.send(f"Question: {question}\n Answer: {random.choice(responses)}")
+
+@client.command()
+async def clear (ctx , amount : int ):
+    await ctx.channel.purge(limit=amount)
+
+@client.event
+async def on_command_error (ctx , error):
+
+     if isinstance(error , commands.MissingRequiredArgument):
+
+        await ctx.send("please pass all arguments")
+
+@client.command()
+async def thanks(ctx,member: discord.Member):
+    await ctx.send(f"{ctx.author.mention} you have succesfully thanked {member.mention}")
+
+
+
+client.run("NzUxMzY2MjY2MTg2NDk4MDUw.X1ICXQ.sA_VOg0NcaraHXhxE7RFM38su-4")
