@@ -52,4 +52,4 @@ async def thanks(ctx,member: discord.Member):
 
 
 
-client.run("NzUxMzY2MjY2MTg2NDk4MDUw.X1ICXQ.sA_VOg0NcaraHXhxE7RFM38su-4")
+
